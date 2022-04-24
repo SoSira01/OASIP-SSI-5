@@ -1,4 +1,4 @@
-package com.example.booking.repository;
+package com.example.booking.entities;
 
 import javax.persistence.*;
 import java.time.Instant;

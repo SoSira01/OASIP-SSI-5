@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `Book`.`Category` ;
 CREATE TABLE IF NOT EXISTS `Book`.`Category` (
   `CategoryId` INT NOT NULL,
   `CategoryName` VARCHAR(100) NOT NULL,
-  `Duration` VARCHAR(45) NOT NULL,
+  `Duration` INT NOT NULL,
   `CategoryDescription` VARCHAR(500) NOT NULL,
   PRIMARY KEY (`CategoryId`),
   UNIQUE INDEX `CategoryName_UNIQUE` (`CategoryName` ASC) VISIBLE)
