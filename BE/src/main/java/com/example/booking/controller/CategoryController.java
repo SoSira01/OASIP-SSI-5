@@ -1,7 +1,7 @@
 package com.example.booking.controller;
 
-import com.example.booking.entities.Category;
-import com.example.booking.repositories.CategoryRepository;
+import com.example.booking.dtos.CategoryDTO;
+import com.example.booking.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,9 +13,9 @@ import java.util.List;
 @RequestMapping("/api/category")
 public class CategoryController {
     @Autowired
-    private CategoryRepository repository;
+    private CategoryService categoryservice;
     @GetMapping("")
-    public List<Category> getOffices() {
-        return repository.findAll();
+    public List<CategoryDTO> getAllCategory() {
+        return categoryservice.getCategory();
     }
 }
