@@ -6,8 +6,10 @@ import com.example.booking.repositories.BookingRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+@Service
 public class BookingServices {
     @Autowired
     private BookingRepository repository;

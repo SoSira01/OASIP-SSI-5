@@ -37,7 +37,7 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 insert into Category 
-value(1,'','','');
+value(1,'Project Management Clinic','30','This is Description');
 
 insert into booking 
-value(1,'','','','','');
+value(1,'Somchai Jaidee','2022-04-26 13:30','somchai.jai@kmutt.ac.th','Group 04','1');

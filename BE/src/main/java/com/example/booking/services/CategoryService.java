@@ -6,9 +6,11 @@ import com.example.booking.repositories.CategoryRepository;
 import com.example.booking.utils.ListMapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CategoryService {
     @Autowired
     private CategoryRepository repository;
