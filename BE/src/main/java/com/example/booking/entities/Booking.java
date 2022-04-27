@@ -29,5 +29,6 @@ public class Booking {
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "Category_CategoryId", nullable = false)
-    private Category categoryCategory;
+    private Category category;
+
 }

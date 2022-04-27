@@ -24,6 +24,6 @@ public class Category {
     @Column(name = "CategoryDescription", nullable = false, length = 500)
     private String categoryDescription;
 
-    @OneToMany(mappedBy = "categoryCategory")
+    @OneToMany(mappedBy = "category")
     private Set<Booking> bookings = new LinkedHashSet<>();
 }
