@@ -2,16 +2,11 @@ package com.example.booking.controller;
 
 import com.example.booking.dtos.AllBookingDTO;
 import com.example.booking.dtos.BookingDTO;
-import org.modelmapper.ModelMapper;
-import org.springframework.data.domain.Page;
 import com.example.booking.entities.Booking;
-import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.data.domain.PageRequest;
 import com.example.booking.services.BookingServices;
 import com.example.booking.repositories.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -46,14 +41,10 @@ public class BookingController {
         return bookingservices.save (newBooking);
     }
 
-//    @DeleteMapping("/{Id}")
-//    public ResponseEntity<?> deleteBooking(@PathVariable Integer Id) {
-//        Booking booking = bookingservices.getSafeStudent(Id);
-//        admissionService.deleteAllAdmissionByStudId(booking.getBookingId());
-////
-//        Booking booking = modelMapper.map(Id, Booking.class);
-//        return bookingservices.deleteStudent(booking);
-//    }
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Integer id){
+        bookingservices.deleteById(id);
+    }
 
 
 }
