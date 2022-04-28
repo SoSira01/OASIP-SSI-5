@@ -12,32 +12,38 @@ import com.example.booking.services.BookingServices;
 import com.example.booking.repositories.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/booking")
 public class BookingController {
     @Autowired
     private BookingRepository repository;
-    //get all
+    //get all working
+//    @GetMapping("")
+//    public Page<Booking> getAllBookings(
+//            @RequestParam(defaultValue = "id") String sortBy,
+//            @RequestParam(defaultValue = "0") Integer page,
+//            @RequestParam(defaultValue = "5") Integer pageSize) {
+//        Sort sort = Sort.by(sortBy);
+//        return repository.findAll(PageRequest.of(page, pageSize, sort));
+//    }
     @GetMapping("")
-    public Page<Booking> getAllBookings(
-            @RequestParam(defaultValue = "id") String sortBy,
-            @RequestParam(defaultValue = "0") Integer page,
-            @RequestParam(defaultValue = "5") Integer pageSize) {
-        Sort sort = Sort.by(sortBy);
-        return repository.findAll(PageRequest.of(page, pageSize, sort));
+    public List<BookingDTO> getBookingById(){
+        return  bookingservices.getBooking();
     }
-
     @Autowired
     private BookingServices bookingservices;
-    //get by id
+    //get by id working
     @GetMapping("/{id}")
     public AllBookingDTO getBookingById(@PathVariable Integer id){
         return  bookingservices.getBookingById(id);
     }
-    //create booking
+    //create booking not working
     @PostMapping("")
     public Booking create(@RequestBody BookingDTO newBooking){
-        return bookingservices.save(newBooking);
+        return bookingservices.save (newBooking);
     }
 
 //    @DeleteMapping("/{Id}")

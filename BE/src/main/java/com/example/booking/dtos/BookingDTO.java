@@ -1,10 +1,9 @@
 package com.example.booking.dtos;
 
-import com.example.booking.entities.Booking;
-import com.example.booking.entities.Category;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import java.time.Instant;
 
 @Getter

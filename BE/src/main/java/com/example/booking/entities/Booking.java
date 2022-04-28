@@ -26,7 +26,7 @@ public class Booking {
 
     @Column(name = "Note")
     private String note;
-    @JsonIgnore
+    //@JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "Category_CategoryId", nullable = false)
     private Category category;

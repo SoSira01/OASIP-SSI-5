@@ -1,5 +1,6 @@
 package com.example.booking.dtos;
 
+import com.example.booking.entities.Category;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,6 +18,6 @@ public class AllBookingDTO {
 
     private Integer categoryId;
     private String categoryName;
-    private Integer duration;
+    private Integer categoryDuration;
     private String categoryDescription;
 }
