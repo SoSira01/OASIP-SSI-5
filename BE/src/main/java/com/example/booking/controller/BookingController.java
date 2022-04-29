@@ -5,7 +5,6 @@ import com.example.booking.dtos.BookingDTO;
 import com.example.booking.entities.Booking;
 import com.example.booking.services.BookingService;
 import org.springframework.web.bind.annotation.*;
-import com.example.booking.services.BookingService;
 import com.example.booking.repositories.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
