@@ -3,8 +3,9 @@ package com.example.booking.controller;
 import com.example.booking.dtos.AllBookingDTO;
 import com.example.booking.dtos.BookingDTO;
 import com.example.booking.entities.Booking;
+import com.example.booking.services.BookingService;
 import org.springframework.web.bind.annotation.*;
-import com.example.booking.services.BookingServices;
+import com.example.booking.services.BookingService;
 import com.example.booking.repositories.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -29,7 +30,7 @@ public class BookingController {
         return  bookingservices.getBooking();
     }
     @Autowired
-    private BookingServices bookingservices;
+    private BookingService bookingservices;
     //get by id working
     @GetMapping("/{id}")
     public AllBookingDTO getBookingById(@PathVariable Integer id){
