@@ -1,8 +1,10 @@
 package com.example.booking.dtos;
 
+import com.example.booking.entities.Category;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import net.minidev.json.annotate.JsonIgnore;
 
 import java.time.Instant;
 
@@ -15,4 +17,7 @@ public class BookingDTO {
     private Instant startTime;
     private String email;
     private String note;
+    @JsonIgnore
+    private CategoryDTO category;
+
 }
