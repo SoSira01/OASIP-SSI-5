@@ -1,21 +1,17 @@
-<script>
+<script setup>
  defineProps({
     listBooking: {
         type: Array,
         default: []
     }
 })
+
 </script>
-
 <template>
+    <div>
+       <p v-for="(b, i) in listBooking" :key="i">{{b.id}}</p>
+        </div>
 
-<div class="mt-8">
-    <ul>
-      <li v-for="(book, index) in booking" :key="index">
-        <p class="font-bold text-xl">{{ book.id }} {{ book.bookingName }}</p>
-      </li>
-    </ul>
-</div>
 </template>
 
 <style>
