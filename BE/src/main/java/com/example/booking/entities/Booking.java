@@ -12,10 +12,10 @@ import java.time.Instant;
 @Table(name = "booking")
 public class Booking {
     @Id
-    @Column(name = "bookingId", nullable = false)
+    @Column(name = "BookingId", nullable = false)
     private Integer id;
 
-    @Column(name = "bookingName", nullable = false, length = 100)
+    @Column(name = "BookingName", nullable = false, length = 100)
     private String bookingName;
 
     @Column(name = "StartTime", nullable = false)

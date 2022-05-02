@@ -6,6 +6,7 @@ import com.example.booking.repositories.BookingRepository;
 import com.example.booking.utils.ListMapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -22,12 +23,12 @@ public class BookingService {
     private ListMapper listMapper;
     //get booking
     public List<BookingDTO> getBooking(){
-        List<Booking> BookingList = repository.findAll();
+        List<Booking> BookingList = repository.findAll(Sort.by("startTime").descending());
         return  listMapper.mapList(BookingList,BookingDTO.class,modelMapper);
     }
     //create booking
-    public Booking create(BookingDTO newbooking) {
-         Booking book = modelMapper.map(newbooking,Booking.class);
+    public Booking create(BookingDTO newBooking) {
+         Booking book = modelMapper.map(newBooking,Booking.class);
         return repository.saveAndFlush(book);
     }
 
