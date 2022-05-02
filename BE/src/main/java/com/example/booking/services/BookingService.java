@@ -1,6 +1,5 @@
 package com.example.booking.services;
 
-import com.example.booking.dtos.AllBookingDTO;
 import com.example.booking.dtos.BookingDTO;
 import com.example.booking.entities.Booking;
 import com.example.booking.repositories.BookingRepository;
@@ -9,7 +8,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -28,18 +26,19 @@ public class BookingService {
         return  listMapper.mapList(BookingList,BookingDTO.class,modelMapper);
     }
     //create booking
-    public Booking save(BookingDTO newBooking) {
-        Booking booking = modelMapper.map(newBooking, Booking.class);
-        return repository.save(booking);
+    public Booking create(BookingDTO newbooking) {
+         Booking book = modelMapper.map(newbooking,Booking.class);
+        return repository.saveAndFlush(book);
     }
+
     //get booking by id
-    public AllBookingDTO getBookingById(Integer bookingId) {
+    public BookingDTO getBookingById(Integer bookingId) {
         Booking booking = repository.findById(bookingId)
                 .orElseThrow(()->new ResponseStatusException(
                         HttpStatus.NOT_FOUND, "Booking id "+ bookingId+
                         "Does Not Exist !!!"
                 ));
-        return modelMapper.map(booking, AllBookingDTO.class);
+        return modelMapper.map(booking, BookingDTO.class);
     }
 
     //delete booking
