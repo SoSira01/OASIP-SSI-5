@@ -13,11 +13,14 @@ const getListBooking = async () => {
 onBeforeMount(() => {
   getListBooking();
 })
+
+
+
 </script>
  
 <template>
   <ListBooking 
-  :ListBooking="book"/>
+  :listBooking="book"/>
 </template>
  
 <style scoped></style>

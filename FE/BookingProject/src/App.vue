@@ -3,7 +3,7 @@
 </script>
  
 <template>
-<div>
+<div class="">
    <router-link :to="{ name: 'Home' }">Home</router-link>
    <router-link :to="{ name: 'List' }">List</router-link>
 </div>

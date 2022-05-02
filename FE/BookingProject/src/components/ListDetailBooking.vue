@@ -21,7 +21,8 @@ defineProps({
             <p>duration : {{booking.category.duration}} Minutes</p>
              <p>categoryName : {{booking.category.categoryName}}</p>
              <p>bookingName : {{ booking.bookingName}}</p>
-            <button >MoreDetails</button>
+             <p>Email : {{ booking.email}}</p>
+             <p>Note : {{ booking.notes}}</p>
             <button @click="$emit('remove', { bookingId : booking.id, categoriesId : categories.id})" class="my-2 flex-row btn btn-outline btn-error btn-xs drop-shadow-xl">DELETE</button>
             <br>
         </div>
