@@ -1,32 +1,36 @@
 <script setup>
-defineEmits(['remove'])
+defineEmits(['remove','back'])
 
 defineProps({
-    listBooking : {
-        type : Array,
-        require : true,
-        default: []
+    listDetailBooking : {
+        type : Object,  
+        require : true
     }
 })
-/* list-all : date starttime duration catagoryname bookingName
-   detail : date starttime duration catagoryName bookingName email notes */
+
 </script>
 
 
 <template>
-        <h2>List Booking</h2>
-        <div class="grid grid-cols-3">
-        <div class="rounded-lg bg-info text-black text-center m-10 p-5 drop-shadow-xl" v-for="booking in listBooking" :key="listBooking.id">
-            <p>startTime : {{ booking.startTime}}</p> 
-            <p>duration : {{booking.category.duration}} Minutes</p>
-             <p>categoryName : {{booking.category.categoryName}}</p>
-             <p>bookingName : {{ booking.bookingName}}</p>
-             <p>Email : {{ booking.email}}</p>
-             <p>Note : {{ booking.notes}}</p>
-            <button @click="$emit('remove', { bookingId : booking.id, categoriesId : categories.id})" class="my-2 flex-row btn btn-outline btn-error btn-xs drop-shadow-xl">DELETE</button>
-            <br>
-        </div>
+<div>
+    <p class="text-4xl font-semibold text-center p-5">Detail List Booking</p>
+    <div class="grid grid-cols-1 w-7/12 ml-auto mr-auto drop-shadow ">
+       <div class="rounded-lg bg-neutral text-white m-10 p-8 drop-shadow-xl text-left">
+        <!--v-for-->
+        <p>Booking ID : {{listDetailBooking.id}}</p>
+        <p>bookingName : {{listDetailBooking.bookingName}}</p>
+        <p>Email : {{ listDetailBooking.email}}</p>
+        <p>categoryName : {{listDetailBooking.categoryName}}</p>
+        <p>startTime : {{ new Date(listDetailBooking.startTime).toLocaleString()}}</p>
+        <p>duration : {{listDetailBooking.categoryDuration}} minutes</p>
+        <p>Note : {{ listDetailBooking.note}}</p>     
+
+        <router-link class="my-2 flex-row btn btn-outline btn-warning btn-xs drop-shadow-xl mr-3" :to="{ name: 'List' }">BACK</router-link>
+        <button @click="$emit('remove', listDetailBooking.id)" class="my-2 flex-row btn btn-outline btn-error btn-xs drop-shadow-xl">DELETE</button>
+       </div>
     </div>
+    
+</div>
 
 </template>
 

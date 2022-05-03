@@ -1,6 +1,7 @@
 package com.example.booking.controller;
 
 import com.example.booking.dtos.BookingDTO;
+import com.example.booking.dtos.DetailBookingDTO;
 import com.example.booking.entities.Booking;
 import com.example.booking.services.BookingService;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ public class BookingController {
     private BookingService bookingservices;
     //get by id working
     @GetMapping("/{id}")
-    public BookingDTO getBookingById(@PathVariable Integer id){
+    public DetailBookingDTO getBookingById(@PathVariable Integer id){
         return  bookingservices.getBookingById(id);
     }
     //create booking
