@@ -9,6 +9,12 @@ defineProps({
     }
 })
 
+const confirmAction = (bookingId) => {
+    let confirmAction =  confirm(`Do you want to delete booking: ${bookingId}`)
+    if(confirmAction) {
+        return bookingId
+    }
+}
 </script>
 
 
@@ -16,9 +22,7 @@ defineProps({
 <div class="mt-8 text-center">
         <p class="text-4xl font-semibold">List Booking</p>
         <br>
-        <!-- <p>{{noSchedule()}}</p> -->
         <p v-show="listBooking == '' ">No schedule event</p>
-        <!-- <p v-if="listBooking == '' ">No schedule event</p> -->
         <div class="grid grid-cols-1 w-7/12 ml-auto mr-auto drop-shadow ">
         <div class="rounded-lg bg-neutral text-white m-10 p-8 drop-shadow-xl text-left" v-for="booking in listBooking" :key="listBooking.id">
     
@@ -35,7 +39,7 @@ defineProps({
                 }">
                 Details
             </router-link></p>
-            <button @click="$emit('remove', booking.id)" class="my-2 flex-row btn btn-outline btn-error btn-xs drop-shadow-xl">DELETE</button>
+            <button @click="$emit('remove', confirmAction(booking.id))" class="my-2 flex-row btn btn-outline btn-error btn-xs drop-shadow-xl">DELETE</button>
             <br>
         </div>
     </div>

@@ -1,4 +1,7 @@
 <script setup>
+import { useRouter } from 'vue-router'
+const appRouter = useRouter()
+const goBack = () => appRouter.go(-1)
 defineEmits(['remove','back'])
 
 defineProps({
@@ -7,6 +10,13 @@ defineProps({
         require : true
     }
 })
+
+const confirmAction = (bookingId) => {
+    let confirmAction =  confirm(`Do you want to delete booking: ${bookingId}`)
+    if(confirmAction) {
+        return bookingId
+    }
+}
 
 </script>
 
@@ -25,8 +35,9 @@ defineProps({
         <p>duration : {{listDetailBooking.categoryDuration}} minutes</p>
         <p>Note : {{ listDetailBooking.note}}</p>     
 
-        <router-link class="my-2 flex-row btn btn-outline btn-warning btn-xs drop-shadow-xl mr-3" :to="{ name: 'List' }">BACK</router-link>
-        <button @click="$emit('remove', listDetailBooking.id)" class="my-2 flex-row btn btn-outline btn-error btn-xs drop-shadow-xl">DELETE</button>
+        <button @click="goBack" class="my-2 flex-row btn btn-outline btn-warning btn-xs drop-shadow-xl mr-3">BACK</button>
+        <!-- <router-link class="my-2 flex-row btn btn-outline btn-warning btn-xs drop-shadow-xl mr-3" :to="{ name: 'List' }">BACK</router-link> -->
+        <button @click="$emit('remove', confirmAction(listDetailBooking.id))" class="my-2 flex-row btn btn-outline btn-error btn-xs drop-shadow-xl">DELETE</button>
        </div>
     </div>
     

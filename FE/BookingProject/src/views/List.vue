@@ -26,9 +26,7 @@ const removeEvent = async (deleteId) => {
     method: 'DELETE'
   })
   if(res.status === 200){   //ถ้าลบสำเร็จจะต้องให้ข้อมูลนั้นหายออกไปจากหน้าเว็บ
-    // bookdetails.value = bookdetails.value.filter((bookdetail) => {
-    //   bookdetail.id !== deleteId.value
-    //   })
+    book.value = book.value.filter((book) => { return book.id != deleteId })
     // router.push({name: 'List'})
     console.log("deleted success")
   }else {
@@ -39,11 +37,9 @@ const removeEvent = async (deleteId) => {
  
 <template>
   <ListBooking 
-  :listBooking="bookingComputed"
+  :listBooking="book"
   @remove="removeEvent"
   />
-
-  <!-- <p v-show="book === '' ">No schedule event</p> -->
 </template>
  
 <style scoped></style>

@@ -9,9 +9,9 @@ const bookdetails = ref({})
 let {params} = useRoute() 
 console.log(params.BookingId)  
 
-const id = computed(() => params.BookingId)
-// const id = ref(params.BookingId) 
-console.log(id) 
+// const id = computed(() => params.BookingId)
+const id = ref(params.BookingId) 
+// console.log(id) 
 //GET
 const getListBookingById = async () => {
   const res = await fetch(`http://10.4.56.116:8080/api/booking/${id.value}`);
@@ -23,6 +23,8 @@ const getListBookingById = async () => {
 
   getListBookingById();
 
+
+
 // const deleteId = computed(() => params.deleteBookingId)
 //DELETE
 const removeEvent = async (deleteId) => {
@@ -30,9 +32,7 @@ const removeEvent = async (deleteId) => {
     method: 'DELETE'
   })
   if(res.status === 200){   //ถ้าลบสำเร็จจะต้องให้ข้อมูลนั้นหายออกไปจากหน้าเว็บ
-    // bookdetails.value = bookdetails.value.filter((bookdetail) => {
-    //   bookdetail.id !== deleteId.value
-    //   })
+    // bookdetails.value = bookdetails.value.filter((bookdetails) =>  bookdetails.id != deleteId )
     router.push({name: 'List'})
     console.log("deleted success")
   }else {
