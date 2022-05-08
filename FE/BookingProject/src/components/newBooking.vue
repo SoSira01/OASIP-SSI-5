@@ -3,14 +3,14 @@ import { ref } from 'vue'
 
 defineEmits(['AddList'])
 
-const newBooking = ref({id: 0, bookingName:'',startTime:'',email:'',note:'',category:{id:0}})
+const newBooking = ref({id: 0, bookingName:'',startTime:'',email:'',note:'',category:{id: 0}})
 
-console.log(newBooking)
+console.log(newBooking.value)
+
 </script>
  
-
 <template>
- <div> <!--eventCategory(dropdown), bookingName(tex), bookingEmail(text), eventStartTime(?), eventNotes(text)-->
+ <div> 
         <div>
         <div class="pt-20 right-0 left-0 top-4 z-50 flex justify-center items-center md:inset-0">
             <form class="bg-white rounded-2xl px-6 pt-6 pb-8 w-1/2">
@@ -51,9 +51,9 @@ console.log(newBooking)
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="category">category</label>
                     <select name="category" id="category" placeholder="category" v-model="newBooking.category.id"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                        <option value="1">Project Management Clinic</option>
-                        <option value="2">DevOps/Infra Clinic</option>
-                        <option value="3">Database Clinic</option>
+                        <option value=1>Project Management Clinic</option>
+                        <option value=2>DevOps/Infra Clinic</option>
+                        <option value=3>Database Clinic</option>
                     </select>
                     </div>
                     </div>

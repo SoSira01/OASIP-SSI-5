@@ -9,14 +9,13 @@ defineProps({
     }
 })
 
-const confirmAction = (bookingId) => {
-    let confirmAction =  confirm(`Do you want to delete booking: ${bookingId}`)
+const confirmAction = (bookingId,bookingName) => {
+    let confirmAction =  confirm(`Do you want to delete booking: ${bookingName}`)
     if(confirmAction) {
         return bookingId
     }
 }
 </script>
-
 
 <template>
 <div class="mt-8 text-center">
@@ -39,7 +38,7 @@ const confirmAction = (bookingId) => {
                 }">
                 Details
             </router-link></p>
-            <button @click="$emit('remove', confirmAction(booking.id))" class="my-2 flex-row btn btn-outline btn-error btn-xs drop-shadow-xl">DELETE</button>
+            <button @click="$emit('remove', confirmAction(booking.id,booking.bookingName))" class="my-2 flex-row btn btn-outline btn-error btn-xs drop-shadow-xl">DELETE</button>
             <br>
         </div>
     </div>
