@@ -11,8 +11,8 @@ defineProps({
     }
 })
 
-const confirmAction = (bookingId) => {
-    let confirmAction =  confirm(`Do you want to delete booking: ${bookingId}`)
+const confirmAction = (bookingId,bookingName) => {
+    let confirmAction =  confirm(`Do you want to delete booking: ${bookingName}`)
     if(confirmAction) {
         return bookingId
     }
@@ -37,7 +37,7 @@ const confirmAction = (bookingId) => {
 
         <button @click="goBack" class="my-2 flex-row btn btn-outline btn-warning btn-xs drop-shadow-xl mr-3">BACK</button>
         <!-- <router-link class="my-2 flex-row btn btn-outline btn-warning btn-xs drop-shadow-xl mr-3" :to="{ name: 'List' }">BACK</router-link> -->
-        <button @click="$emit('remove', confirmAction(listDetailBooking.id))" class="my-2 flex-row btn btn-outline btn-error btn-xs drop-shadow-xl">DELETE</button>
+        <button @click="$emit('remove', confirmAction(listDetailBooking.id,listDetailBooking.bookingName))" class="my-2 flex-row btn btn-outline btn-error btn-xs drop-shadow-xl">DELETE</button>
        </div>
     </div>
     
