@@ -15,6 +15,8 @@ const confirmAction = (bookingId,bookingName) => {
         return bookingId
     }
 }
+
+console.log('hello')
 </script>
 
 <template>
