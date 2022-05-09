@@ -25,23 +25,23 @@ const confirmAction = (bookingId,bookingName) => {
 <div>
     <p class="text-4xl font-semibold text-center p-5">Detail List Booking</p>
     <div class="grid grid-cols-1 w-7/12 ml-auto mr-auto drop-shadow ">
-       <div class="rounded-lg bg-neutral text-white m-10 p-8 drop-shadow-xl text-left">
+       <div class="rounded-lg bg-warning text-base text-base-100 m-10 p-8 drop-shadow-xl text-left">
         <!--v-for-->
-        <p>Booking ID : {{listDetailBooking.id}}</p>
-        <p>bookingName : {{listDetailBooking.bookingName}}</p>
-        <p>Email : {{ listDetailBooking.email}}</p>
-        <p>categoryName : {{listDetailBooking.categoryName}}</p>
-        <p>startTime : {{ new Date(listDetailBooking.startTime).toLocaleString()}}</p>
-        <p>duration : {{listDetailBooking.categoryDuration}} minutes</p>
-        <p>Note : {{ listDetailBooking.note}}</p>     
+        <p><b>Booking ID :</b> {{listDetailBooking.id}}</p>
+        <p><b>bookingName :</b>  {{listDetailBooking.bookingName}}</p>
+        <p><b>Email :</b>  {{ listDetailBooking.email}}</p>
+        <p><b>categoryName :</b> {{listDetailBooking.categoryName}}</p>
+        <p><b>startTime :</b> {{ new Date(listDetailBooking.startTime).toLocaleString()}}</p>
+        <p><b>duration :</b> {{listDetailBooking.categoryDuration}} minutes</p>
+        <p><b>Note :</b> {{ listDetailBooking.note}}</p>     
 
-        <button @click="goBack" class="my-2 flex-row btn btn-outline btn-warning btn-xs drop-shadow-xl mr-3">BACK</button>
-        <!-- <router-link class="my-2 flex-row btn btn-outline btn-warning btn-xs drop-shadow-xl mr-3" :to="{ name: 'List' }">BACK</router-link> -->
-        <button @click="$emit('remove', confirmAction(listDetailBooking.id,listDetailBooking.bookingName))" class="my-2 flex-row btn btn-outline btn-error btn-xs drop-shadow-xl">DELETE</button>
+        <router-link class="mt-5 flex-row btn btn-xs drop-shadow-xl mr-3" :to="{ name: 'List' }">BACK</router-link>
+        <button @click="$emit('remove', listDetailBooking.id)" class="mt-5 flex-row btn btn-error btn-xs drop-shadow-xl">DELETE</button>
        </div>
     </div>
     
 </div>
+
 
 </template>
 

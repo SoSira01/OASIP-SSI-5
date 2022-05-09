@@ -1,22 +1,18 @@
 <script setup>
 import { useRouter } from 'vue-router'
-
 const appRouter = useRouter();
-
 const goHome = () => appRouter.push({ name: 'Home' });
 </script>
 
 <template>
-  <div class="fixed z-9998 top-0 left-0 w-full h-full bg-slate-900 table ease opacity-30 ">
-    <div class="table-cell align-middle">
-      <div class="w-300 m-auto px-20 py-30 bg-white rounded-sm shadow">
-        <div class="mt-0 text-rose-700"><h3>Page Not Found</h3></div>
-        <div class="m-20">Please try again!</div>
-        <div class="flex-end">
-          <button @click="goHome">Back to Home</button>
+   <div class="w-7/12 ml-auto mr-auto drop-shadow ">
+       <div class="rounded-lg bg-error text-base text-white m-10 p-8 drop-shadow-xl text-center">
+        <div  class="mt-5 text-5xl">Page Not Found</div>
+        <div class="m-10 text-3xl">Please try again!</div>
+        <div>
+          <button class="mt-5 flex-row btn btn-xs drop-shadow-xl mr-3" @click="goHome">Back to Home</button>
         </div>
       </div>
-    </div>
   </div>
 </template>
 <style scoped>

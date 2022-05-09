@@ -16,23 +16,24 @@ const confirmAction = (bookingId,bookingName) => {
     }
 }
 
-console.log('hello')
 </script>
 
 <template>
 <div class="mt-8 text-center">
         <p class="text-4xl font-semibold">List Booking</p>
         <br>
-        <p v-show="listBooking == '' ">No schedule event</p>
-        <div class="grid grid-cols-1 w-7/12 ml-auto mr-auto drop-shadow ">
-        <div class="rounded-lg bg-neutral text-white m-10 p-8 drop-shadow-xl text-left" v-for="booking in listBooking" :key="listBooking.id">
+        <!-- <p>{{noSchedule()}}</p> -->
+        <p v-show="listBooking == ''">No schedule event</p>
+        <!-- <p v-if="listBooking == '' ">No schedule event</p> -->
+    <div class="grid grid-cols-1 w-7/12 ml-auto mr-auto">
+        <div class="rounded-lg bg-warning text-neutral m-10 p-8 drop-shadow-xl text-left text-base" v-for="booking in listBooking" :key="listBooking.id">
     
-            <p>Booking name : {{ booking.bookingName}}</p>
-            <p>Event category name : {{booking.category.categoryName}}</p>
-            <p>Event start time : {{ new Date(booking.startTime).toLocaleString()}}</p> 
-            <p>duration : {{booking.category.duration}} minutes</p>
+            <p><b>Booking name : </b> {{ booking.bookingName}}</p>
+            <p><b>Event category name :</b>  {{booking.category.categoryName}}</p>
+            <p><b>Event start time : </b> {{ new Date(booking.startTime).toLocaleString()}}</p> 
+            <p><b>duration : </b> {{booking.category.duration}} minutes</p>
              
-           <p class="my-2 flex-row btn btn-outline btn-warning btn-xs drop-shadow-xl mr-3">
+           <p class="my-2 flex-row btn btn-xs drop-shadow-xl mr-3">
                 
              <router-link :to="{name: 'ListDetail' , 
                params:{ 
