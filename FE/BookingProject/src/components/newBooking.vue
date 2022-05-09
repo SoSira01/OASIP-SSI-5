@@ -14,7 +14,7 @@ console.log(newBooking.value)
         <!--eventCategory(dropdown), bookingName(tex), bookingEmail(text), eventStartTime(?), eventNotes(text)-->
         <div>
             <div class="pt-10 ml-auto mr-auto right-0 left-0 top-4 z-50 flex justify-center items-center md:inset-0 drop-shadow-xl">
-                <img src="src/assets/add.png" alt="online schedule" class="max-w-2xl">
+                <img src="/images/add.png" alt="online schedule" class="max-w-2xl">
                 <form class="bg-white rounded-lg px-10 pt-10 pb-8 ">
                     <h3 class="text-4xl font-semibold text-base-100 mb-2">Add Event</h3>
                     <p class="text-sm text-neutral pl-3 mb-7">You can book the clinic that you want. </p>

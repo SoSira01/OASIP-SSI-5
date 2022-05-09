@@ -1,7 +1,8 @@
 <script setup>
 import { ref, onBeforeMount } from 'vue'
 import ListBooking from '../components/ListBooking.vue'
-const url = 'http://intproj21.sit.kmutt.ac.th/ssi5/api'
+//const url = 'http://intproj21.sit.kmutt.ac.th:80/ssi5/api'
+const url = '  http://202.44.9.103:8080/ssi5/api'
 const book = ref([])
 //GET
 const getListBooking = async () => {
@@ -19,7 +20,7 @@ const removeEvent = async (deleteId) => {
   const res = await fetch(`${url}/booking/${deleteId}` , {
     method: 'DELETE'
   })
-  if(res.status === 200){   //ถ้าลบสำเร็จจะต้องให้ข้อมูลนั้นหายออกไปจากหน้าเว็บ
+  if(res.status === 200){   
     book.value = book.value.filter((book) => { return book.id != deleteId })
     // router.push({name: 'List'})
     console.log("deleted success")
