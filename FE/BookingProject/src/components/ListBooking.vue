@@ -26,7 +26,7 @@ const confirmAction = (bookingId,bookingName) => {
         <p v-show="listBooking == ''">No schedule event</p>
         <!-- <p v-if="listBooking == '' ">No schedule event</p> -->
     <div class="grid grid-cols-1 w-7/12 ml-auto mr-auto">
-        <div class="rounded-lg bg-warning text-neutral m-10 p-8 drop-shadow-xl text-left text-base" v-for="booking in listBooking" :key="listBooking.id">
+        <div class="rounded-lg bg-white text-neutral m-10 p-8 drop-shadow-xl text-left text-base" v-for="booking in listBooking" :key="listBooking.id">
     
             <p><b>Booking name : </b> {{ booking.bookingName}}</p>
             <p><b>Event category name :</b>  {{booking.category.categoryName}}</p>

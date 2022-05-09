@@ -1,17 +1,11 @@
 <script setup>
-import { ref, onBeforeMount,computed } from 'vue'
+import { ref, onBeforeMount } from 'vue'
 import ListBooking from '../components/ListBooking.vue'
+const url = 'http://intproj21.sit.kmutt.ac.th/ssi5/api'
 const book = ref([])
-// const bookingComputed = computed(() => {
-//   book.value
-// })
-// console.log(book)
-// console.log(bookingComputed)
-
-
 //GET
 const getListBooking = async () => {
-  const res = await fetch('http://10.4.56.116:8080/api/booking')
+  const res = await fetch(`${url}/booking`)
   if (res.status === 200) {
     book.value = await res.json()
     console.log(book.value)
@@ -22,7 +16,7 @@ onBeforeMount(() => {
 })
 
 const removeEvent = async (deleteId) => {
-  const res = await fetch(`http://10.4.56.116:8080/api/booking/${deleteId}` , {
+  const res = await fetch(`${url}/booking/${deleteId}` , {
     method: 'DELETE'
   })
   if(res.status === 200){   //ถ้าลบสำเร็จจะต้องให้ข้อมูลนั้นหายออกไปจากหน้าเว็บ

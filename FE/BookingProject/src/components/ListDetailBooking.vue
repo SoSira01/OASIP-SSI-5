@@ -25,7 +25,7 @@ const confirmAction = (bookingId,bookingName) => {
 <div>
     <p class="text-4xl font-semibold text-center p-5">Detail List Booking</p>
     <div class="grid grid-cols-1 w-7/12 ml-auto mr-auto drop-shadow ">
-       <div class="rounded-lg bg-warning text-base text-base-100 m-10 p-8 drop-shadow-xl text-left">
+       <div class="rounded-lg bg-white text-base text-base-100 m-10 p-8 drop-shadow-xl text-left">
         <!--v-for-->
         <p><b>Booking ID :</b> {{listDetailBooking.id}}</p>
         <p><b>bookingName :</b>  {{listDetailBooking.bookingName}}</p>

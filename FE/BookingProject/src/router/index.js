@@ -6,7 +6,7 @@ import ListDetail from '../views/ListDetail.vue'
 import AddList from '../views/AddList.vue'
 import AboutUs from '../views/AboutUs.vue'
 
-const history = createWebHistory()
+const history = createWebHistory('/ssi5/')
 const routes = [
     {
         path: '/',

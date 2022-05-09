@@ -3,11 +3,11 @@ import { ref } from 'vue'
 
 defineEmits(['AddList'])
 
-const newBooking = ref({ id: 0, bookingName: '', startTime: '', email: '', note: '', category: { id: 0 } })
+const newBooking = ref({})
 
 console.log(newBooking.value)
+
 </script>
- 
 
 <template>
     <div>
@@ -20,13 +20,7 @@ console.log(newBooking.value)
                     <p class="text-sm text-neutral pl-3 mb-7">You can book the clinic that you want. </p>
                     <div class=" flex">
                         <div class="flex-1 text-neutral pt-3 pl-5">
-                            <label class="block text-base-100 text-sm font-bold mb-3" for="password">Booking id</label>
-                            <input type="number" name="id" id="id" v-model="newBooking.id"
-                                class="bg-gray-50 border border-gray-300  text-sm rounded-lg  block w-full p-2.5">
-                        </div>
-                        <div class="flex-1 text-neutral pt-3 pl-5">
-                            <label class="block text-base-100 text-sm font-bold mb-3" for="password">Booking
-                                name</label>
+                            <label class="block text-base-100 text-sm font-bold mb-3" for="password">Bookingname</label>
                             <input type="text" name="bookingName" id="bookingName" v-model="newBooking.bookingName"
                                 class="bg-gray-50 border border-gray-300  text-sm rounded-lg block w-full p-2.5">
                         </div>
@@ -34,7 +28,7 @@ console.log(newBooking.value)
                      <div class=" flex">
                     <div class="flex-1 text-neutral pt-3 pl-5">
                         <label class="block text-base-100 text-sm font-bold mb-3" for="category">Event category name</label>
-                        <select name="category" id="category" v-model="newBooking.category.id"
+                        <select name="category" id="category" v-model="newBooking.categoryid"
                             class=" select bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5 ">
                             <option disabled selected>Select Clinics</option>
                             <option value=1>Project Management Clinic</option>
@@ -44,9 +38,10 @@ console.log(newBooking.value)
                     </div>
 
                     <div class="flex-1 text-neutral pt-3 pl-5">
-                        <label class="block text-base-100 text-sm font-bold mb-3" for="password">Event start
-                            time</label>
-                        <input type="datetime-local" name="startTime" id="startTime" v-model="newBooking.startTime"
+                        <label class="block text-base-100 text-sm font-bold mb-3" for="password">Event start time</label>
+                        <input type="datetime-local"
+                            name="startTime" id="startTime" 
+                            v-model="newBooking.startTime"
                             class="bg-gray-50 border border-gray-300 text-sm rounded-lg  block w-full p-2.5">
                     </div>
                     </div>
@@ -63,7 +58,6 @@ console.log(newBooking.value)
                             class="bg-gray-50 border border-gray-300  text-sm rounded-lg block w-full p-2.5">
                     </div>
 
-
                     <button
                         class="pt-3 pl-5 w-full rounded-lg text-sm px-10 py-2.5 text-center mt-5 btn btn-warning drop-shadow-xl"
                         type="button" data-modal-toggle="add-form" @click="$emit('AddList', newBooking)">
@@ -76,5 +70,4 @@ console.log(newBooking.value)
     </div>
 </template>
  
-<style>
-</style>
+<style></style>

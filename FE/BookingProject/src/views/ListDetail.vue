@@ -1,20 +1,19 @@
 <script setup>
 import {useRoute} from 'vue-router'
-import {ref } from 'vue'
+import { ref } from 'vue'
 import ListDetailBooking from '../components/ListDetailBooking.vue'
-import { computed } from '@vue/reactivity';
 import router from "../router";
+const url = "http://intproj21.sit.kmutt.ac.th/ssi5/api"
 const bookdetails = ref({})
 
 let {params} = useRoute() 
 console.log(params.BookingId)  
 
-// const id = computed(() => params.BookingId)
 const id = ref(params.BookingId) 
-// console.log(id) 
+
 //GET
 const getListBookingById = async () => {
-  const res = await fetch(`http://10.4.56.116:8080/api/booking/${id.value}`);
+  const res = await fetch(`${url}/booking/${id.value}`);
   if (res.status === 200) {
     bookdetails.value = await res.json()
     console.log(bookdetails.value)
@@ -23,16 +22,12 @@ const getListBookingById = async () => {
 
   getListBookingById();
 
-
-
-// const deleteId = computed(() => params.deleteBookingId)
 //DELETE
 const removeEvent = async (deleteId) => {
-  const res = await fetch(`http://10.4.56.116:8080/api/booking/${deleteId}` , {
+  const res = await fetch(`${url}/api/booking/${deleteId}` , {
     method: 'DELETE'
   })
-  if(res.status === 200){   //ถ้าลบสำเร็จจะต้องให้ข้อมูลนั้นหายออกไปจากหน้าเว็บ
-    // bookdetails.value = bookdetails.value.filter((bookdetails) =>  bookdetails.id != deleteId )
+  if(res.status === 200){   
     router.push({name: 'List'})
     console.log("deleted success")
   }else {
