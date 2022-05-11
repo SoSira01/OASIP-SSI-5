@@ -3,7 +3,7 @@ import {useRoute} from 'vue-router'
 import { ref } from 'vue'
 import ListDetailBooking from '../components/ListDetailBooking.vue'
 import router from "../router";
-// const url = 'http://intproj21.sit.kmutt.ac.th:80/ssi5/api'
+//const url = 'http://intproj21.sit.kmutt.ac.th:80/ssi5/api'
 const url = 'http://202.44.9.103:8080/ssi5/api'
 
 const bookdetails = ref({})
@@ -26,7 +26,7 @@ const getListBookingById = async () => {
 
 //DELETE
 const removeEvent = async (deleteId) => {
-  const res = await fetch(`${url}/api/booking/${deleteId}` , {
+  const res = await fetch(`${url}/booking/${deleteId}` , {
     method: 'DELETE'
   })
   if(res.status === 200){   
@@ -43,6 +43,7 @@ const removeEvent = async (deleteId) => {
   <ListDetailBooking 
   :listDetailBooking="bookdetails"
   @remove="removeEvent"
+  @edit=""
   />
 
 

@@ -1,8 +1,8 @@
 <script setup>
 import NewBooking from '../components/NewBooking.vue'
 import router from '../router'
-// const url = 'http://intproj21.sit.kmutt.ac.th:80/ssi5/api'
-const url = '  http://202.44.9.103:8080/ssi5/api'
+const url = 'http://intproj21.sit.kmutt.ac.th:80/ssi5/api'
+//const url = '  http://202.44.9.103:8080/ssi5/api'
 // POST 
 const addBooking = async (newBookingEvent) => {
     console.log(newBookingEvent)
@@ -14,7 +14,7 @@ const addBooking = async (newBookingEvent) => {
                 bookingName: newBookingEvent.bookingName,
                 startTime: new Date(newBookingEvent.startTime).toISOString(),
                 email: newBookingEvent.email,
-                note: newBookingEvent.category,
+                note: newBookingEvent.note,
                 category: {
                     id: newBookingEvent.categoryid
                 }

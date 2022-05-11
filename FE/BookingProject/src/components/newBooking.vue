@@ -34,6 +34,8 @@ console.log(newBooking.value)
                             <option value=1>Project Management Clinic</option>
                             <option value=2>DevOps/Infra Clinic</option>
                             <option value=3>Database Clinic</option>
+                            <option value=4>Client-side Clinic</option>
+                            <option value=5>Server-side Clinic</option> 
                         </select>
                     </div>
 

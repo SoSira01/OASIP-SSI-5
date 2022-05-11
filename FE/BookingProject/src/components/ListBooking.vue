@@ -29,10 +29,9 @@ const confirmAction = (bookingId,bookingName) => {
         <div class="rounded-lg bg-white text-neutral m-10 p-8 drop-shadow-xl text-left text-base" v-for="booking in listBooking" :key="listBooking.id">
     
             <p><b>Booking name : </b> {{ booking.bookingName}}</p>
-            <p><b>Event category name :</b>  {{booking.category.categoryName}}</p>
-            <p><b>Event start time : </b> {{ new Date(booking.startTime).toLocaleString()}}</p> 
-            <p><b>duration : </b> {{booking.category.duration}} minutes</p>
-             
+            <p><b>Event category name :</b>  {{booking.categoryName}}</p> 
+            <p><b>Event start time : </b> {{ new Date(booking.startTime).toLocaleString('en-us',{day : 'numeric',month:'short', year:'numeric'})}}</p>            
+            <p><b>duration : </b> {{booking.categoryDuration}} minutes</p>      
            <p class="my-2 flex-row btn btn-xs drop-shadow-xl mr-3">
                 
              <router-link :to="{name: 'ListDetail' , 

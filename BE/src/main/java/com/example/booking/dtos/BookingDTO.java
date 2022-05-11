@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import net.minidev.json.annotate.JsonIgnore;
 
-import java.time.Instant;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -14,8 +14,13 @@ import java.time.Instant;
 public class BookingDTO {
     private Integer id;
     private String bookingName;
-    private Instant startTime;
+    private Date startTime;
+    private String email;
+    private String note;
     @JsonIgnore
-    private CategoryDTO category;
+    private Integer categoryId;
+    private String categoryName;
+    private Integer categoryDuration;
+    private String categoryDescription;
 
 }

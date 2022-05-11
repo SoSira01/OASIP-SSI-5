@@ -1,11 +1,11 @@
 package com.example.booking.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.Instant;
+import java.util.Date;
+
 @Getter
 @Setter
 @Entity
@@ -20,7 +20,7 @@ public class Booking {
     private String bookingName;
 
     @Column(name = "StartTime", nullable = false)
-    private Instant startTime;
+    private Date startTime;
 
     @Column(name = "Email", length = 45)
     private String email;

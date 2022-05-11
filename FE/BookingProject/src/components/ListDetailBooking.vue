@@ -1,8 +1,8 @@
 <script setup>
 import { useRouter } from 'vue-router'
+import {ref } from 'vue'
 const appRouter = useRouter()
-const goBack = () => appRouter.go(-1)
-defineEmits(['remove','back'])
+defineEmits(['remove','back','edit'])
 
 defineProps({
     listDetailBooking : {
@@ -20,7 +20,6 @@ const confirmAction = (bookingId,bookingName) => {
 
 </script>
 
-
 <template>
 <div>
     <p class="text-4xl font-semibold text-center p-5">Detail List Booking</p>
@@ -30,18 +29,18 @@ const confirmAction = (bookingId,bookingName) => {
         <p><b>Booking ID :</b> {{listDetailBooking.id}}</p>
         <p><b>bookingName :</b>  {{listDetailBooking.bookingName}}</p>
         <p><b>Email :</b>  {{ listDetailBooking.email}}</p>
-        <p><b>categoryName :</b> {{listDetailBooking.categoryName}}</p>
-        <p><b>startTime :</b> {{ new Date(listDetailBooking.startTime).toLocaleString()}}</p>
+        <p><b>categoryName :</b> {{listDetailBooking.category}}</p>
+        <p><b>startTime :</b> {{ new Date(listDetailBooking.startTime).toLocaleString('en-us',{day : 'numeric',month:'short', year:'numeric'})}}</p>        
         <p><b>duration :</b> {{listDetailBooking.categoryDuration}} minutes</p>
         <p><b>Note :</b> {{ listDetailBooking.note}}</p>     
 
         <router-link class="mt-5 flex-row btn btn-xs drop-shadow-xl mr-3" :to="{ name: 'List' }">BACK</router-link>
-        <button @click="$emit('remove', listDetailBooking.id)" class="mt-5 flex-row btn btn-error btn-xs drop-shadow-xl">DELETE</button>
+        <button @click="$emit('remove', confirmAction(listDetailBooking.id,listDetailBooking.bookingName))" class="mt-5 flex-row btn btn-error btn-xs drop-shadow-xl">DELETE</button>
+        <button @click="$emit('edit', listDetailBooking.id)" class="mt-5 flex-row btn btn-error btn-xs drop-shadow-xl">EDIT</button>
        </div>
     </div>
     
 </div>
-
 
 </template>
 
