@@ -6,7 +6,7 @@
 
 <div class="navbar bg-base-100 mt-1">
   <div class="flex-1">  
-    <p class="text-primary normal-case pl-5 font-bold text-2xl">- CLINIC | <span class="text-white">booking -</span></p>
+    <p class="text-primary normal-case pl-5 font-bold text-2xl"><router-link :to="{ name: 'Home' }">- CLINIC | <span class="text-white">booking -</span></router-link></p>
   </div>
   <div class="flex-none">
     <ul class="menu menu-horizontal p-0 mr-8 text-lg text-white space-x-3">
