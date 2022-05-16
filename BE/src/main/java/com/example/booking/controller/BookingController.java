@@ -24,11 +24,6 @@ public class BookingController {
     public BookingDTO getBookingById(@PathVariable Integer id){
         return  bookingservices.getBookingById(id);
     }
-    //get by categoryId
-    @GetMapping("/{id}")
-    public BookingDTO getBookingByCategoryId(@PathVariable Integer id){
-        return  bookingservices.getIdByCategory(id);
-    }
     //create booking
     @PostMapping("")
     public Booking create(@RequestBody BookingDTO newBooking){

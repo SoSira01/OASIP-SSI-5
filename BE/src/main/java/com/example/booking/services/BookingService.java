@@ -54,27 +54,27 @@ public class BookingService {
         Category duration = categoryrepository.findById(categoryId)
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND, "Category id : "+ categoryId+
-                        "Does Not Exist !!!"
+                        "Not Found ID to Overlap"
                 ));
         Date endTime = new Date(startTime.getTime() + (1000*60*duration.getDuration()));
         List<Booking> book = repository.findAllByStartTimeBetween(startTime, endTime);
         return book.size() == 0;
     }
+
     //create booking
     public Booking create(BookingDTO newBooking) {
-        try {
             Booking book = modelMapper.map(newBooking, Booking.class);
-            checkEmail = validateEmail(book.getEmail());
-            checkDate = OverlapStartTime(book.getCategory().getId(), book.getStartTime());
-            if (checkEmail &&  checkDate) {
-                return repository.saveAndFlush(book);
-            } else {
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "email must be well-formed; StartTime error");
+
+//            if(validateEmail(book.getEmail())){
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "email error");
+//            }
+
+            if (!OverlapStartTime(book.getCategory().getId(), book.getStartTime())) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "StartTime error");
+
             }
-        }
-        catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Does Not Exist !!!", e.getCause());
-        }
+            return repository.saveAndFlush(book);
+
     }
 
     //get booking by id
@@ -82,7 +82,7 @@ public class BookingService {
         Booking booking = repository.findById(bookingId)
                 .orElseThrow(()-> new ResponseStatusException(
                         HttpStatus.NOT_FOUND, "Booking id "+ bookingId+
-                        "Does Not Exist !!!"
+                        "Get Booking By id Not found"
                 ));
         return modelMapper.map(booking, BookingDTO.class);
     }
@@ -101,31 +101,26 @@ public class BookingService {
     public void deleteById(Integer id) {
         repository.findById(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND,
-                        id + " does not exist !!!"));
+                        id + "Not Found ID To Delete"));
         repository.deleteById(id);
     }
     //Edit
     public BookingDTO editBooking(EditBookingDTO editbookingdto, Integer id){
-        try {
             Booking booking = modelMapper.map(editbookingdto, Booking.class);
+
             Booking bk = repository.findById(id)
                     .orElseThrow(() -> new ResponseStatusException(
                             HttpStatus.BAD_REQUEST, "Booking id" + id +
-                            "does not exist !!!"
+                            "Not found ID to Edit"
                     ));
-            checkDate = OverlapStartTime(bk.getId(), bk.getStartTime());
-            bk.setEmail(booking.getEmail());
             bk.setStartTime(booking.getStartTime());
             bk.setNote(booking.getNote());
-            if (checkDate) {
+
+        if (!OverlapStartTime(booking.getCategory().getId(), booking.getStartTime())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "StartTime error");
+
+        }
                 return modelMapper.map(bk,BookingDTO.class);
-            } else {
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "email must be well-formed; StartTime error");
-            }
-        }
-        catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Does Not Exist !!!", e.getCause());
-        }
     }
 
 }
