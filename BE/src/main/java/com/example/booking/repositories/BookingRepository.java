@@ -7,6 +7,5 @@ import java.util.Date;
 import java.util.List;
 
 public interface BookingRepository extends JpaRepository<Booking, Integer> {
-
     List<Booking> findAllByStartTimeBetween(Date startTime, Date endTime);
 }
