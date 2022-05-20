@@ -6,6 +6,8 @@ import ListDetail from '../views/ListDetail.vue'
 import AddList from '../views/AddList.vue'
 import AboutUs from '../views/AboutUs.vue'
 import Edit from '../views/Edit.vue'
+import CategoryList from '../views/CategoryList.vue'
+import EditCategory from '../views/EditCategory.vue'
 
 const history = createWebHistory('/ssi5/')
 const routes = [
@@ -30,14 +32,24 @@ const routes = [
         component: AddList
     },
     {
-        path: '/edit/:BookingId',
+        path: '/List/:BookingId/edit/:BookingIdEdit',
         name: 'Edit',
         component: Edit
+    },
+    {
+        path: '/CatagoryList/editCategory/:CategoryId',
+        name: 'EditCategory',
+        component: EditCategory
     },
     {
         path: '/AboutUs',
         name: 'AboutUs',
         component: AboutUs
+    },
+    {
+        path: '/CatagoryList',
+        name: 'CategoryList',
+        component: CategoryList
     },
     {
         path: '/:catchNotMatchPath(.*)',

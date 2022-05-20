@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.*;
+
 import java.util.Date;
 
 @Getter
@@ -29,6 +30,5 @@ public class BookingDTO {
     private String categoryName;
     private Integer categoryDuration;
     private String categoryDescription;
-
 
 }
