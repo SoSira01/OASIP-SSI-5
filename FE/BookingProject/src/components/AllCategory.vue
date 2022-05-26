@@ -26,7 +26,7 @@ console.log(prop.allcategory);
 
                 <p><span class="font-bold text-lg  text-base-100">Duration : </span>{{ allCat.duration }}</p>
 
-                <p v-if="allCat.categoryDescription != null || allCat.categoryDescription != '' "><span
+                <p v-if="allCat.categoryDescription != null"><span
                         class="font-bold text-lg text-base-100">Description : </span>{{ allCat.categoryDescription }}
                 </p>
                 <p v-else><span class="font-bold text-lg  text-base-100">Description : </span>No description</p>

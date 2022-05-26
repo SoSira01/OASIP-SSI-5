@@ -4,8 +4,8 @@ import { ref,onBeforeMount } from 'vue'
 import EditBooking from '../components/EditBooking.vue'
 import router from "../router";
 
-//const url = 'http://intproj21.sit.kmutt.ac.th:80/ssi5/api'
-const url = '  http://202.44.9.103:8080/ssi5/api'
+const url = 'http://intproj21.sit.kmutt.ac.th:80/ssi5/api'
+// const url = '  http://202.44.9.103:8080/ssi5/api'
 
 //EDIT
 const editdetails = ref({});
@@ -18,6 +18,12 @@ const id = ref(params.BookingIdEdit)
 //PATCH (edit)
 const editBooking = async (newedit, e) => {
   e.preventDefault();  //prevent to refresh page
+  
+    if (editing.duration > 481 || editing.duration < 1){
+    alert("you can add number only between 1 - 480")
+    return
+  }
+
   console.log(newedit)
   const res = await fetch(`${url}/booking/${id.value}`, {
     method: 'PATCH',

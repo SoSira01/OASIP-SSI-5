@@ -2,7 +2,7 @@
 
 defineEmits(['remove', 'back', 'edit'])
 
-defineProps({
+const props = defineProps({
     listDetailBooking: {
         type: Object,
         require: true
@@ -14,6 +14,10 @@ const confirmAction = (bookingId, bookingName) => {
     if (confirmAction) {
         return bookingId
     }
+}
+
+if(props.listDetailBooking.id == null){
+    props.listDetailBooking.id = 0
 }
 
 </script>
@@ -39,7 +43,6 @@ const confirmAction = (bookingId, bookingName) => {
                     <p class="font-bold text-lg text-base-100">Note : </p>
                     <textarea class="w-full ml-3 rounded-lg" disabled="disabled" rows="5" cols="50">{{ listDetailBooking.note }}</textarea></p>
                 <p v-else><span class="font-bold text-lg text-base-100">Note : </span>No note</p>
-
                 <router-link class="mt-5 btn btn-xs drop-shadow-xl mr-3" :to="{ name: 'List' }">BACK</router-link>
                 <router-link class="mt-5 flex-row btn btn-base-100 btn-xs drop-shadow-xl mr-3" :to="{
                     name: 'Edit',

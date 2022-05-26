@@ -12,6 +12,7 @@ import javax.validation.constraints.*;
 @AllArgsConstructor
 public class CategoryDTO {
     private Integer id;
+    @NotNull
     @Unique
     private String categoryName;
     @NotNull

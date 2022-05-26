@@ -1,6 +1,6 @@
 <script setup>
 
-import { ref} from 'vue'
+import { computed, ref} from 'vue'
 
 defineEmits(['AddList'])
 
@@ -11,9 +11,16 @@ const props = defineProps({
     }
 })
 
-const newBooking = ref({})
+const newBooking = ref({bookingName: "" ,note : "",email:""})
 
-const pattern = "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
+//const pattern = "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
+
+ function validEmail(e) {
+      var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      return re.test(e)
+    }
+var today = new Date()
+var nowtime = today.toISOString().substring(0, 16) 
 
 </script>
 
@@ -31,9 +38,13 @@ const pattern = "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9
                     <div class=" flex">
                         <div class="flex-1 text-neutral pt-3 pl-5">
                             <label class="block text-base-100 text-sm font-bold mb-3" for="password">Bookingname</label>
+                            <span v-if="newBooking.bookingName && newBooking.bookingName.length > 100" class="text-xs text-error italic"> 
+                           * You add more than 100 characters </span>
                             <input type="text" name="bookingName" id="bookingName" v-model="newBooking.bookingName"
                                 class="bg-gray-50 border border-gray-300  text-sm rounded-lg block w-full p-2.5"
-                                placeholder="--- Please input New bookingName ---">
+                                placeholder="--- Please input New bookingName ---" required>
+                                <span class="text-xs">{{newBooking.bookingName.length}}/100</span>
+
                         </div>
                     </div>
 
@@ -45,7 +56,6 @@ const pattern = "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9
                             <select name="category" id="category" v-model="newBooking.category"
                                 class=" select bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full">
                                 <option value="" disabled selected>Please select your category</option>
-                                
                                 <option :value="categoryDetail" v-for="(categoryDetail, index) in categoryDetails"
                                     :key="index"> {{ categoryDetail.categoryName }}
                                 </option>
@@ -54,13 +64,14 @@ const pattern = "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9
 
                         <!--duration-->
                         <div class="flex-1 block text-base-100 text-sm font-bold mb-3">
-                            <p v-if="!newBooking.category" class="text-error ml-3 mt-14">* Select a category</p>
+                            <p v-if="!newBooking.category" class="text-sm text-error ml-3 mt-14">* Select a category</p>
                             <p v-else class="ml-3 mt-14 ">Duration : {{ newBooking.category.duration }} minutes</p>
                         </div>
 
                         <!--start Time-->
                         <div class="flex-1 text-neutral pt-3 pl-5">
                             <label class="block text-base-100 text-sm font-bold mb-3" for="password">Event start time</label>
+                            <span v-if = "newBooking.startTime < nowtime" class="text-error text-xs italic">* must be a future date or present</span>
                             <input type="datetime-local" name="startTime" id="startTime" v-model="newBooking.startTime" required 
                                 class="bg-gray-50 border border-gray-300 text-sm rounded-lg  block w-full p-2.5">
                         </div>
@@ -69,21 +80,27 @@ const pattern = "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9
                     <!--email-->
                     <div class="text-neutral pt-3 pl-5">
                         <label class="block text-base-100 text-sm font-bold mb-3" for="password">Email</label>
-                        <span v-if="newBooking.email == ''" class="text-warning"> * Please input your email </span> 
+                        <span v-if="newBooking.email && newBooking.email.length > 100" class="text-xs text-error italic"> 
+                        * You add more than 100 characters </span>
+                        <span v-if="!validEmail(newBooking.email)" class="text-xs text-error italic" >* Valid email required</span>
                         <input type="email" required 
                             name="email" id="email" 
                             v-model="newBooking.email" 
-                            class="form-control bg-gray-50 border border-gray-300  text-sm rounded-lg block w-full p-2.5"
+                            class="bg-gray-50 border border-gray-300  text-sm rounded-lg block w-full p-2.5"
                             placeholder="--- Ex. Somsri.ra@kmutt.ac.th ---">
+                            <span class="text-xs">{{newBooking.email.length}}/100</span>
+
                     </div>
 
                     <!--note-->
                     <div class="text-neutral pt-3 pl-5">
                         <label class="block text-base-100 text-sm font-bold mb-3" for="password">Note</label>
-                        <span v-if="newBooking.note && newBooking.note.length > 500" class="text-error"> 
+                        <span v-if="newBooking.note && newBooking.note.length > 500" class="text-xs text-error italic"> 
                         * You add more than 500 characters </span> 
                         <textarea class="bg-gray-50 border border-gray-300 w-full rounded-lg mt-2 p-2.5" rows="auto" cols="50" name="note" id="note"
                          v-model="newBooking.note"></textarea>
+                        <span class="text-xs">{{newBooking.note.length}}/500</span>
+
                     </div>
 
                     <button

@@ -1,5 +1,5 @@
 <script setup>
-import {computed } from "vue";
+import {computed,ref } from "vue";
 defineEmits(['edit'])
 
 const props = defineProps({
@@ -16,8 +16,13 @@ const confirmAction = (editBooking, startTime, note) => {
     }
 }
 
-const editBooking = computed(() => {return {startTime: String(props.editBook.startTime).substring(0, 16) , note: props.editBook.note}})
 
+
+const edit = computed(() => {return {startTime: new Date(props.editBook.startTime).toLocaleString('en-US', { dateStyle: 'full', timeStyle: 'medium' }) , note: props.editBook.note}})
+const editBooking = ref({note: ""})
+
+var today = new Date()
+var nowtime = today.toISOString().substring(0, 16) 
 
 </script>
  
@@ -58,15 +63,19 @@ const editBooking = computed(() => {return {startTime: String(props.editBook.sta
 
                     <div class="flex-1 text-neutral pt-2 pl-5">
                         <label class="block text-base-100 text-sm font-bold mb-3" for="password">Event start time</label>
+                        <p>{{edit.startTime}}</p>
+                        <span v-if = "editBooking.startTime < nowtime" class="text-error text-xs italic">* must be a future date</span>
                         <input type="datetime-local" name="startTime" id="startTime" v-model="editBooking.startTime"
                             class="bg-gray-50 border border-gray-300 text-sm rounded-lg  block w-full p-2.5">
                     </div>
                 
                 <div class="flex-1 text-neutral pt-2 pl-5">
                     <label class="block text-base-100 text-sm font-bold mb-3" for="password">Note</label>
-                    <span class="block text-xs text-warning">You cannot add more than 500 characters</span>
-                    <textarea class="bg-gray-50 border border-gray-300 w-full rounded-lg mt-1 p-2.5" rows="auto" cols="50" name="note" id="note" maxlength="500"
+                    <span v-if="editBooking.note.length >= 500" class="block text-xs text-error italic">* You cannot add more than 500 characters</span>
+                    <textarea class="bg-gray-50 border border-gray-300 w-full rounded-lg mt-1 p-2.5" rows="auto" cols="50" name="note" id="note" :placeholder="edit.note"
                      v-model="editBooking.note"></textarea>
+                    <span class="text-xs">{{editBooking.note.length}}/500</span>
+
                 </div>
 
                 <br>
