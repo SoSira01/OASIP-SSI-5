@@ -30,9 +30,9 @@ const confirmAction = (editCat, categoryName, duration,categoryDescription) => {
 <div
         class="mt-20 pt-10 ml-auto mr-auto right-0 left-0 top-4 z-50 flex justify-center items-center md:inset-0 drop-shadow-xl">
         <form class="bg-white rounded-lg px-10 pt-3 pb-8">
-            <div class="float-right mt-12">
+            <div class="float-right mt-7">
                 <h3 class="text-4xl font-semibold text-base-100 mb-2">Edit Category</h3>
-                <p class="text-sm text-neutral pl-3 mb-7">You can edit any category feild that you want.</p>
+                <p class="text-sm text-neutral pl-3 mb-5">You can edit any category feild that you want.</p>
 
                 <!--Category name-->
                 <div class="text-neutral pt-3 pl-5">
@@ -49,9 +49,9 @@ const confirmAction = (editCat, categoryName, duration,categoryDescription) => {
                 <!--duration-->
                 <div class="text-neutral pt-3 pl-5">
                     <label class="block text-base-100 text-sm font-bold mb-3" for="password">duration</label>
-                    <span v-if="editCat.duration >= 481" class="text-sm text-error italic">
+                    <span v-if="editCat.duration >= 481" class="text-xs text-error italic">
                     * You add more than 480 minutes</span>
-                    <span v-if="editCat.duration < 1" class="text-sm text-error italic"> 
+                    <span v-if="editCat.duration < 1" class="text-xs text-error italic"> 
                     * You must add more than 1 minutes</span>
                     <input type="number" name="duration" id="duration" v-model="editCat.duration" :placeholder="edit.duration"
                         class="bg-gray-50 border border-gray-300  text-sm rounded-lg block w-full p-2.5" >
@@ -62,8 +62,8 @@ const confirmAction = (editCat, categoryName, duration,categoryDescription) => {
                     <label class="block text-base-100 text-sm font-bold mb-3" for="password">description</label>
                     <span v-if="editCat.categoryDescription && editCat.categoryDescription.length > 500" class="text-xs text-error italic"> 
                         * You add more than 500 characters </span>
-                    <input type="text" name="description" id="description" v-model="editCat.categoryDescription" :placeholder="edit.categoryDescription"
-                        class="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5">
+                    <textarea class="w-full mt-2 rounded-lg indent-6 bg-gray-50 border border-gray-300 p-2.5" rows="2" cols="50" 
+                     name="description" id="description" v-model="editCat.categoryDescription"></textarea>
                      <span class="text-xs">{{editCat.categoryDescription.length}}/500</span>
 
                 </div>

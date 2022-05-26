@@ -30,14 +30,14 @@ var nowtime = today.toISOString().substring(0, 16)
             <div
                 class="pt-5 ml-auto mr-auto right-0 left-0 top-4 z-50 flex justify-center items-center md:inset-0 drop-shadow-xl">
                 <img src="/images/add.png" alt="online schedule" class="max-w-2xl">
-                <form class="bg-white rounded-lg px-10 pt-10 pb-8 ">
+                <form class="bg-white rounded-lg px-10 pt-7 pb-8 ">
                     <h3 class="text-4xl font-semibold text-base-100 mb-2">Add Event</h3>
-                    <p class="text-sm text-neutral pl-3 mb-7">You can book the clinic that you want. </p>
+                    <p class="text-sm text-neutral pl-3 mb-4">You can book the clinic that you want. </p>
 
                     <!--name-->
                     <div class=" flex">
                         <div class="flex-1 text-neutral pt-3 pl-5">
-                            <label class="block text-base-100 text-sm font-bold mb-3" for="password">Bookingname</label>
+                            <label class="block text-base-100 text-sm font-bold mb-1" for="password">Bookingname</label>
                             <span v-if="newBooking.bookingName && newBooking.bookingName.length > 100" class="text-xs text-error italic"> 
                            * You add more than 100 characters </span>
                             <input type="text" name="bookingName" id="bookingName" v-model="newBooking.bookingName"
@@ -51,7 +51,7 @@ var nowtime = today.toISOString().substring(0, 16)
                     <!--category name-->
                     <div class=" flex">
                         <div class="flex-1 text-neutral pt-3 pl-5 pr-5">
-                            <label class="block text-base-100 text-sm font-bold mb-3" for="category">
+                            <label class="block text-base-100 text-sm font-bold mb-1" for="category">
                                 Event category name</label>
                             <select name="category" id="category" v-model="newBooking.category"
                                 class=" select bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full">
@@ -70,7 +70,7 @@ var nowtime = today.toISOString().substring(0, 16)
 
                         <!--start Time-->
                         <div class="flex-1 text-neutral pt-3 pl-5">
-                            <label class="block text-base-100 text-sm font-bold mb-3" for="password">Event start time</label>
+                            <label class="block text-base-100 text-sm font-bold mb-1" for="password">Event start time</label>
                             <span v-if = "newBooking.startTime < nowtime" class="text-error text-xs italic">* must be a future date or present</span>
                             <input type="datetime-local" name="startTime" id="startTime" v-model="newBooking.startTime" required 
                                 class="bg-gray-50 border border-gray-300 text-sm rounded-lg  block w-full p-2.5">
@@ -79,7 +79,7 @@ var nowtime = today.toISOString().substring(0, 16)
 
                     <!--email-->
                     <div class="text-neutral pt-3 pl-5">
-                        <label class="block text-base-100 text-sm font-bold mb-3" for="password">Email</label>
+                        <label class="block text-base-100 text-sm font-bold mb-1" for="password">Email</label>
                         <span v-if="newBooking.email && newBooking.email.length > 100" class="text-xs text-error italic"> 
                         * You add more than 100 characters </span>
                         <span v-if="!validEmail(newBooking.email)" class="text-xs text-error italic" >* Valid email required</span>
@@ -94,10 +94,10 @@ var nowtime = today.toISOString().substring(0, 16)
 
                     <!--note-->
                     <div class="text-neutral pt-3 pl-5">
-                        <label class="block text-base-100 text-sm font-bold mb-3" for="password">Note</label>
+                        <label class="block text-base-100 text-sm font-bold mb-1" for="password">Note</label>
                         <span v-if="newBooking.note && newBooking.note.length > 500" class="text-xs text-error italic"> 
                         * You add more than 500 characters </span> 
-                        <textarea class="bg-gray-50 border border-gray-300 w-full rounded-lg mt-2 p-2.5" rows="auto" cols="50" name="note" id="note"
+                        <textarea class="bg-gray-50 border border-gray-300 w-full rounded-lg mt-2 p-2.5" rows="1" cols="50" name="note" id="note"
                          v-model="newBooking.note"></textarea>
                         <span class="text-xs">{{newBooking.note.length}}/500</span>
 
