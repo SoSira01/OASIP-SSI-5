@@ -5,7 +5,7 @@
 
 ## System Architecture
 
-![Slice 1sys architect ](https://user-images.githubusercontent.com/47183080/166188433-819792c6-3248-43a5-aefd-a46d91a6a481.png)
+![Slice 2](https://user-images.githubusercontent.com/68803255/173013043-bd2fdcf1-2a1c-447e-8fc7-e963046cdc66.png)
 
 ## ER Diagram
 
