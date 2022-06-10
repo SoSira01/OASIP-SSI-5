@@ -9,4 +9,4 @@
 
 ## ER Diagram
 
-![Er](https://user-images.githubusercontent.com/47183080/169825646-d5ac2d76-bcfa-45c2-8915-93a9d9ef8a75.png)
+<img width="527" alt="er" src="https://user-images.githubusercontent.com/68803255/173013546-62c338a0-13c0-4f32-860d-9a2003fd3547.png">
